@@ -1,0 +1,124 @@
+{
+  "vpc-provider:account=925517469638:filter.isDefault=true:region=ap-northeast-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-7d6cc414",
+    "vpcCidrBlock": "172.31.0.0/16",
+    "availabilityZones": [],
+    "vpnGatewayId": "vgw-07d74b92661c5557a",
+    "subnetGroups": [
+      {
+        "name": "Private",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-014ad7019b0580c7c",
+            "cidr": "172.31.114.0/24",
+            "availabilityZone": "ap-northeast-2a",
+            "routeTableId": "rtb-00ba1bec2d2645988"
+          },
+          {
+            "subnetId": "subnet-06ec67e561756d7c0",
+            "cidr": "172.31.176.0/20",
+            "availabilityZone": "ap-northeast-2a",
+            "routeTableId": "rtb-08443d8ffac66722b"
+          },
+          {
+            "subnetId": "subnet-02062889999b1ea3d",
+            "cidr": "172.31.192.0/20",
+            "availabilityZone": "ap-northeast-2b",
+            "routeTableId": "rtb-08443d8ffac66722b"
+          },
+          {
+            "subnetId": "subnet-0a4bbb1e5e9a464c3",
+            "cidr": "172.31.96.0/20",
+            "availabilityZone": "ap-northeast-2b",
+            "routeTableId": "rtb-081e20facac8b6701"
+          },
+          {
+            "subnetId": "subnet-00ccbbad1c97a4481",
+            "cidr": "172.31.115.0/24",
+            "availabilityZone": "ap-northeast-2b",
+            "routeTableId": "rtb-00ba1bec2d2645988"
+          },
+          {
+            "subnetId": "subnet-0faf6de5af8237787",
+            "cidr": "172.31.64.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-081e20facac8b6701"
+          },
+          {
+            "subnetId": "subnet-06990378050340147",
+            "cidr": "172.31.80.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-08443d8ffac66722b"
+          },
+          {
+            "subnetId": "subnet-02ddfb782ce49fff7",
+            "cidr": "172.31.128.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-081e20facac8b6701"
+          },
+          {
+            "subnetId": "subnet-0d6661f916d8205f2",
+            "cidr": "172.31.48.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-08443d8ffac66722b"
+          },
+          {
+            "subnetId": "subnet-0e87daf62bc438984",
+            "cidr": "172.31.116.0/24",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-00ba1bec2d2645988"
+          },
+          {
+            "subnetId": "subnet-0b38c5c93eb609e4a",
+            "cidr": "172.31.160.0/20",
+            "availabilityZone": "ap-northeast-2d",
+            "routeTableId": "rtb-081e20facac8b6701"
+          }
+        ]
+      },
+      {
+        "name": "Public",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-ef04ae86",
+            "cidr": "172.31.0.0/20",
+            "availabilityZone": "ap-northeast-2a",
+            "routeTableId": "rtb-0dba0b64"
+          },
+          {
+            "subnetId": "subnet-a4cd14cc",
+            "cidr": "172.31.32.0/20",
+            "availabilityZone": "ap-northeast-2a",
+            "routeTableId": "rtb-088d3860"
+          },
+          {
+            "subnetId": "subnet-89e217c4",
+            "cidr": "172.31.16.0/20",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-0dba0b64"
+          }
+        ]
+      },
+      {
+        "name": "Isolated",
+        "type": "Isolated",
+        "subnets": [
+          {
+            "subnetId": "subnet-06d2c8ed407084304",
+            "cidr": "172.31.112.0/24",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-04b11fab5bf2de537"
+          },
+          {
+            "subnetId": "subnet-0a4d141e0372e4c71",
+            "cidr": "172.31.113.0/24",
+            "availabilityZone": "ap-northeast-2c",
+            "routeTableId": "rtb-024723da1db8700d0"
+          }
+        ]
+      }
+    ]
+  }
+}
