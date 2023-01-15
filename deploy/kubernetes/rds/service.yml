@@ -1,0 +1,7 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres-service
+spec:
+  type: ExternalName
+  externalName: rcs.cluster-clh24sqssg0t.ap-northeast-2.rds.amazonaws.com

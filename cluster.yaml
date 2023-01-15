@@ -1,0 +1,52 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: rcs-dev
+  region: ap-northeast-2
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: rcs
+      namespace: rcs-app
+      labels: {aws-usage: "application"}
+    attachPolicyARNs:
+    - "arn:aws:iam::925517469638:role/AmazonEKSClusterPodsRole"
+
+vpc:
+  id: "vpc-7d6cc414"
+  securityGroup: "sg-0e53286f6090c9930"    # this is the ControlPlaneSecurityGroup
+  subnets:
+    private:
+      private1:
+          id: "subnet-06990378050340147"
+      private2:
+          id: "subnet-0d6661f916d8205f2"
+      private3:
+          id: "subnet-06ec67e561756d7c0"
+      private4:
+          id: "subnet-02062889999b1ea3d"
+    public:
+      public1:
+          id: "subnet-ef04ae86"
+      public2:
+          id: "subnet-89e217c4"
+
+managedNodeGroups:
+  - name: ng-1
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+      withAddonPolicies:
+        autoScaler: true
+    minSize: 1
+    maxSize: 3
+    instanceType: t3.medium
+    amiFamily: AmazonLinux2
+    desiredCapacity: 1
+    volumeSize: 20
+    privateNetworking: true
+    subnets:
+      - public1
