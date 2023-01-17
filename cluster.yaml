@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs-dev1
+  name: rcs
   region: ap-northeast-2
 
 iam:
@@ -14,6 +14,7 @@ iam:
       labels: {aws-usage: "application"}
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AmazonEKSClusterPodsPolicy"
+    # - "arn:aws:iam::925517469638:policy/AWSLoadBalancerControllerIAMPolicy"
 
 vpc:
   id: "vpc-7d6cc414"
@@ -38,7 +39,7 @@ managedNodeGroups:
   - name: ng-3
     iam:
       attachPolicyARNs:
-        - arn:aws:iam::aws:policy/AdministratorAccess
+        - arn:aws:iam::aws:policy/SecretsManagerReadWrite
         - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
         - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
       withAddonPolicies:

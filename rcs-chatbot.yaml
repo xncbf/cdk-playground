@@ -1,0 +1,85 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rcs-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rcs-chatbot
+  namespace: rcs-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: rcs-chatbot
+  template:
+    metadata:
+      labels:
+        run: rcs-chatbot
+    spec:
+      serviceAccountName: rcs
+      containers:
+      # - name: reverseproxy
+      #   image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/reverseproxy:latest
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 80
+      #   resources:
+      #     limits:
+      #       cpu: 512m
+      #     requests:
+      #       cpu: 256m
+      - name: rcs-chatbot
+        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-45677
+        imagePullPolicy: Always
+        # command: ['sh', '-c', 'echo xxx && sleep 6000']
+        ports:
+        - containerPort: 8000
+        resources:
+          limits:
+            cpu: 512m
+          requests:
+            cpu: 256m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rcs-chatbot
+  # annotations:
+  #       service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+  namespace: rcs-app
+  labels:
+    run: rcs-chatbot
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8000
+    protocol: TCP
+  selector:
+    run: rcs-chatbot
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: rcs-app
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+  - host: "chat-api-dev1.harmonymsg.com"
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rcs-chatbot
+            port:
+              number: 80
