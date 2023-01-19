@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs
+  name: rcs1
   region: ap-northeast-2
 
 iam:
@@ -14,7 +14,11 @@ iam:
       labels: {aws-usage: "application"}
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AmazonEKSClusterPodsPolicy"
-    # - "arn:aws:iam::925517469638:policy/AWSLoadBalancerControllerIAMPolicy"
+  - metadata:
+      name: cluster-autoscaler
+      namespace: kube-system
+    attachPolicyARNs:
+    - "arn:aws:iam::925517469638:policy/AmazonEKSClusterAutoscalerPolicy"
 
 vpc:
   id: "vpc-7d6cc414"
