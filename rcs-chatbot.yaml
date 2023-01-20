@@ -15,8 +15,18 @@ spec:
     spec:
       serviceAccountName: rcs
       containers:
+      # - name: reverseproxy
+      #   image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/reverseproxy:latest
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 80
+      #   resources:
+      #     limits:
+      #       cpu: 512m
+      #     requests:
+      #       cpu: 256m
       - name: rcs-chatbot
-        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-45677
+        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-47807
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
@@ -50,8 +60,9 @@ metadata:
   namespace: rcs-app
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/target-group-attributes: stickiness.enabled=true,stickiness.lb_cookie.duration_seconds=60
+    alb.ingress.kubernetes.io/healthcheck-path: /health
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:925517469638:certificate/9ec939ed-b23c-4ff9-9c92-6e106844e468
     alb.ingress.kubernetes.io/ssl-redirect: '443'
@@ -68,3 +79,17 @@ spec:
             name: rcs-chatbot
             port:
               number: 80
+---
+ apiVersion: autoscaling/v1
+ kind: HorizontalPodAutoscaler
+ metadata:
+   name: rcs-chatbot
+   namespace: rcs-app
+ spec:
+   maxReplicas: 3
+   minReplicas: 2
+   targetCPUUtilizationPercentage: 50
+   scaleTargetRef:
+     apiVersion: v1
+     kind: ReplicationController
+     name: rcs-chatbot
