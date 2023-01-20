@@ -15,18 +15,8 @@ spec:
     spec:
       serviceAccountName: rcs
       containers:
-      # - name: reverseproxy
-      #   image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/reverseproxy:latest
-      #   imagePullPolicy: Always
-      #   ports:
-      #   - containerPort: 80
-      #   resources:
-      #     limits:
-      #       cpu: 512m
-      #     requests:
-      #       cpu: 256m
       - name: rcs-chatbot
-        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-47807
+        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-47835
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
