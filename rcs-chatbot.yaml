@@ -90,6 +90,6 @@ spec:
    minReplicas: 2
    targetCPUUtilizationPercentage: 50
    scaleTargetRef:
-     apiVersion: v1
-     kind: ReplicationController
+     apiVersion: apps/v1
+     kind: Deployment
      name: rcs-chatbot
