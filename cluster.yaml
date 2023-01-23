@@ -54,7 +54,7 @@ managedNodeGroups:
     amiFamily: AmazonLinux2
     desiredCapacity: 1
     volumeSize: 20
-    # privateNetworking: true
+    privateNetworking: true
     subnets:
       - subnet-06ec67e561756d7c0
       - subnet-02062889999b1ea3d

@@ -18,8 +18,10 @@ spec:
       - name: rcs-chatbot
         image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-47835
         imagePullPolicy: Always
+        command: ["/bin/bash"]
+        args: ["-c", "pipenv run python manage.py migrate && pipenv run gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:80"]
         ports:
-        - containerPort: 8000
+        - containerPort: 80
         resources:
           limits:
             cpu: 512m
@@ -37,7 +39,7 @@ spec:
   type: NodePort
   ports:
   - port: 80
-    targetPort: 8000
+    targetPort: 80
     protocol: TCP
   selector:
     run: rcs-chatbot
