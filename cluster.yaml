@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs2
+  name: rcs1
   region: ap-northeast-2
 
 iam:
@@ -17,6 +17,7 @@ iam:
   - metadata:
       name: cluster-autoscaler
       namespace: kube-system
+    attachRoleARN: "arn:aws:iam::925517469638:role/AmazonEKSClusterAutoscalerRole"
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AmazonEKSClusterAutoscalerPolicy"
   - metadata:
@@ -39,7 +40,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: ng-1
+  - name: ng-2
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -55,4 +56,6 @@ managedNodeGroups:
     volumeSize: 20
     # privateNetworking: true
     subnets:
-      - ap-northeast-2a
+      - subnet-06ec67e561756d7c0
+      - subnet-02062889999b1ea3d
+      - subnet-06990378050340147
