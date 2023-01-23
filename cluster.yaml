@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs
+  name: rcs2
   region: ap-northeast-2
 
 iam:
@@ -19,25 +19,24 @@ iam:
       namespace: kube-system
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AmazonEKSClusterAutoscalerPolicy"
+  - metadata:
+      name: aws-load-balancer-controller
+      namespace: kube-system
+    attachRoleARN: "arn:aws:iam::925517469638:role/AmazonEKSLoadBalancerControllerRole"
+    attachPolicyARNs:
+    - "arn:aws:iam::925517469638:policy/AWSLoadBalancerControllerIAMPolicy"
 
 vpc:
   id: "vpc-7d6cc414"
   securityGroup: "sg-0e53286f6090c9930"
   subnets:
-    private:
-      private1:
-          id: "subnet-06990378050340147"
-      private2:
-          id: "subnet-0d6661f916d8205f2"
-      private3:
-          id: "subnet-06ec67e561756d7c0"
-      private4:
-          id: "subnet-02062889999b1ea3d"
     public:
-      public1:
-          id: "subnet-ef04ae86"
-      public2:
-          id: "subnet-89e217c4"
+      ap-northeast-2a: {id: subnet-ef04ae86}
+      ap-northeast-2c: {id: subnet-89e217c4}
+    private:
+      ap-northeast-2a: {id: subnet-06ec67e561756d7c0}
+      ap-northeast-2b: {id: subnet-02062889999b1ea3d}
+      ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
   - name: ng-1
@@ -56,4 +55,4 @@ managedNodeGroups:
     volumeSize: 20
     # privateNetworking: true
     subnets:
-      - public1
+      - ap-northeast-2a
