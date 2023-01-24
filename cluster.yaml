@@ -38,6 +38,12 @@ iam:
     attachRoleARN: "arn:aws:iam::925517469638:role/AmazonEKSLoadBalancerControllerRole"
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AWSLoadBalancerControllerIAMPolicy"
+  - metadata:
+      name: ebs-csi-controller-sa
+      namespace: kube-system
+    attachRoleARN: "arn:aws:iam::925517469638:role/AmazonEKS_EBS_CSI_DriverRole"
+    attachPolicyARNs:
+    - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
 
 vpc:
   id: "vpc-7d6cc414"
@@ -52,7 +58,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: ng-1
+  - name: ng-2
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -62,7 +68,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 1
     maxSize: 3
-    instanceType: t3.medium
+    instanceType: t3.large
     amiFamily: AmazonLinux2
     desiredCapacity: 1
     volumeSize: 20
