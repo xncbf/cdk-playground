@@ -16,7 +16,7 @@ spec:
       serviceAccountName: rcs
       containers:
       - name: rcs-chatbot
-        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:dev-47835
+        image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:prod-47808
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args: ["-c", "pipenv run python manage.py migrate && pipenv run gunicorn core.asgi:application -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:80"]
@@ -37,6 +37,7 @@ metadata:
     run: rcs-chatbot
 spec:
   type: NodePort
+  # externalName: rcs-chatbot.rcs-app.svc.cluster.local
   ports:
   - port: 80
     targetPort: 80
@@ -61,7 +62,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "chat-api-dev1.harmonymsg.com"
+  - host: "chat-api1.harmonymsg.com"
   - http:
       paths:
       - path: /

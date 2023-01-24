@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs1
+  name: rcs
   region: ap-northeast-2
 
 iam:
@@ -11,6 +11,18 @@ iam:
   - metadata:
       name: rcs
       namespace: rcs-app
+      labels: {aws-usage: "application"}
+    attachPolicyARNs:
+    - "arn:aws:iam::925517469638:policy/AmazonEKSClusterPodsPolicy"
+  - metadata:
+      name: rcs-stage
+      namespace: rcs-app-stage
+      labels: {aws-usage: "application"}
+    attachPolicyARNs:
+    - "arn:aws:iam::925517469638:policy/AmazonEKSClusterPodsPolicy"
+  - metadata:
+      name: rcs-dev
+      namespace: rcs-app-dev
       labels: {aws-usage: "application"}
     attachPolicyARNs:
     - "arn:aws:iam::925517469638:policy/AmazonEKSClusterPodsPolicy"
@@ -40,7 +52,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: ng-2
+  - name: ng-1
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -57,5 +69,3 @@ managedNodeGroups:
     privateNetworking: true
     subnets:
       - subnet-06ec67e561756d7c0
-      - subnet-02062889999b1ea3d
-      - subnet-06990378050340147
