@@ -68,7 +68,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 1
     maxSize: 3
-    instanceType: m6g.xlarge
+    instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 1
     # volumeSize: 20
