@@ -58,7 +58,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: ng-2
+  - name: ng-1
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -68,10 +68,10 @@ managedNodeGroups:
         autoScaler: true
     minSize: 1
     maxSize: 3
-    instanceType: t3.large
+    instanceType: m6g.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 1
-    volumeSize: 20
+    # volumeSize: 20
     privateNetworking: true
     subnets:
       - subnet-06ec67e561756d7c0
