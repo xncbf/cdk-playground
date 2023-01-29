@@ -2,7 +2,8 @@
 apiVersion: "autoscaling.k8s.io/v1"
 kind: VerticalPodAutoscaler
 metadata:
-  name: rcs-chatbot-vpa
+  name: rcs-app-dev-vpa
+  namespace: rcs-app-dev
 spec:
   # recommenders field can be unset when using the default recommender.
   # When using an alternative recommender, the alternative recommender's name
@@ -10,9 +11,10 @@ spec:
   # recommenders: 
   #   - name: 'alternative'
   targetRef:
-    apiVersion: "apps/v1"
-    kind: Deployment
-    name: rcs-chatbot
+    apiVersion: "v1"
+    kind: Namespace
+    name: rcs-app-dev
+
   resourcePolicy:
     containerPolicies:
       - containerName: '*'
