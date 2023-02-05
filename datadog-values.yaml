@@ -7,6 +7,7 @@ datadog:
   # If not using secrets, then use apiKey and appKey instead
   # apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
   # appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+  site: us3.datadoghq.com
   clusterName: rcs
   tags: []
   # datadog.kubelet.tlsVerify should be `false` on kind and minikube
