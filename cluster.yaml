@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs
+  name: rcs-dev
   region: ap-northeast-2
 
 iam:
@@ -58,7 +58,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: ng-1
+  - name: harmony-ng
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -67,7 +67,34 @@ managedNodeGroups:
       withAddonPolicies:
         autoScaler: true
     minSize: 1
-    maxSize: 3
+    maxSize: 10
+    taints:
+      - key: harmony
+        value: "true"
+        effect: NoExecute
+    instanceType: m6i.xlarge
+    amiFamily: AmazonLinux2
+    desiredCapacity: 1
+    # volumeSize: 20
+    privateNetworking: true
+    subnets:
+      - subnet-0faf6de5af8237787
+      - subnet-02ddfb782ce49fff7
+
+  - name: rcs-ng
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/SecretsManagerReadWrite
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+      withAddonPolicies:
+        autoScaler: true
+    minSize: 1
+    maxSize: 10
+    taints:
+      - key: rcs
+        value: "true"
+        effect: NoExecute
     instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 1
@@ -75,3 +102,5 @@ managedNodeGroups:
     privateNetworking: true
     subnets:
       - subnet-06ec67e561756d7c0
+      - subnet-02062889999b1ea3d
+      - subnet-06990378050340147
