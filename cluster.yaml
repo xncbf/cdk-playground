@@ -81,7 +81,7 @@ managedNodeGroups:
       - subnet-0faf6de5af8237787
       - subnet-02ddfb782ce49fff7
 
-  - name: rcs-ng
+  - name: rcs-ng1
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -102,5 +102,4 @@ managedNodeGroups:
     privateNetworking: true
     subnets:
       - subnet-06ec67e561756d7c0
-      - subnet-02062889999b1ea3d
       - subnet-06990378050340147
