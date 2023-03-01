@@ -238,6 +238,15 @@ data:
         auto_create_group   true
         extra_user_agent    container-insights
 
+    [OUTPUT]
+        Name                cloudwatch_logs
+        Match               host.*
+        region              ${AWS_REGION}
+        log_group_name      /aws/containerinsights/${CLUSTER_NAME}/host
+        log_stream_prefix   ${HOST_NAME}.
+        auto_create_group   true
+        extra_user_agent    container-insights
+
   parsers.conf: |
     [PARSER]
         Name                cri

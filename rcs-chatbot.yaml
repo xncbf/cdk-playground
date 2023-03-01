@@ -19,6 +19,8 @@ spec:
         run: rcs-chatbot
     spec:
       serviceAccountName: rcs
+      tolerations:
+        - operator: "Exists"
       containers:
       - name: rcs-chatbot
         image: 925517469638.dkr.ecr.ap-northeast-2.amazonaws.com/rcs-chatbot:prod-47808
@@ -49,7 +51,7 @@ metadata:
     run: rcs-chatbot
 spec:
   type: NodePort
-  # externalName: rcs-chatbot.rcs-app.svc.cluster.local
+  # externalName: harmony-auth.harmony-app-dev.svc.cluster.local
   ports:
   - port: 80
     targetPort: 80

@@ -1,4 +1,8 @@
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
+<<<<<<< Updated upstream
   name: jaeger
+=======
+  name: simplest
+>>>>>>> Stashed changes
