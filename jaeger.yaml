@@ -18,6 +18,6 @@ spec:
       memory:
         max-traces: 100000
   ingress:
-    enabled: true
+    enabled: false
   agent:
     strategy: DaemonSet
