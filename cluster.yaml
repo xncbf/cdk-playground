@@ -68,10 +68,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 2
     maxSize: 10
-    taints:
-      - key: harmony
-        value: "true"
-        effect: NoExecute
+    labels: { harmony: true }
     instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 2
@@ -81,11 +78,7 @@ managedNodeGroups:
       - subnet-0faf6de5af8237787
       - subnet-02ddfb782ce49fff7
 
-<<<<<<< Updated upstream
   - name: rcs-ng1
-=======
-  - name: rcs-ng-1
->>>>>>> Stashed changes
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -95,10 +88,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 2
     maxSize: 10
-    taints:
-      - key: rcs
-        value: "true"
-        effect: NoExecute
+    labels: { rcs: true }
     instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 2
