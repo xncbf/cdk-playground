@@ -58,7 +58,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: harmony-ng
+  - name: harmony-ng-1
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -68,7 +68,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 2
     maxSize: 10
-    labels: { harmony: true }
+    labels: { harmony: "true" }
     instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 2
@@ -78,7 +78,7 @@ managedNodeGroups:
       - subnet-0faf6de5af8237787
       - subnet-02ddfb782ce49fff7
 
-  - name: rcs-ng1
+  - name: rcs-ng-1
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -88,7 +88,7 @@ managedNodeGroups:
         autoScaler: true
     minSize: 2
     maxSize: 10
-    labels: { rcs: true }
+    labels: { rcs: "true" }
     instanceType: m6i.xlarge
     amiFamily: AmazonLinux2
     desiredCapacity: 2
