@@ -1,0 +1,76 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: harmony
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/log
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - deployments/log
+  - replicasets
+  - replicasets/log
+  verbs:
+  - patch
+  - get
+  - list
+  - watch
+  - log
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: harmony
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: harmony
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: Youngna
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: Danny
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: hank.kang
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: martina.lee
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: Andrew.Park
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: luca.ha
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: houston.cheon
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: amelia.lee
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: shavkat.nosirov
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: Jeff.Lee
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: tom.na
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: ben
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: bosung.park

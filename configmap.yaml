@@ -1,0 +1,84 @@
+    - userarn: arn:aws:iam::925517469638:user/Youngna
+      username: Youngna
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/Danny
+      username: Danny
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/hank.kang
+      username: hank.kang
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/martina.lee
+      username: martina.lee
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/Andrew.Park
+      username: Andrew.Park
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/luca.ha
+      username: luca.ha
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/houston.cheon
+      username: houston.cheon
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/amelia.lee
+      username: amelia.lee
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/shavkat.nosirov
+      username: shavkat.nosirov
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/Jeff.Lee
+      username: Jeff.Lee
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/tom.na
+      username: tom.na
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/ben
+      username: ben
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/bosung.park
+      username: bosung.park
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
+    - userarn: arn:aws:iam::925517469638:user/Lucian.cho
+      username: Lucian.cho
+      groups:
+      - system:bootstrappers
+      - system:nodes
+      - eks-console-dashboard-full-access-group
