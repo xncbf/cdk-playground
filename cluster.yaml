@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: rcs
+  name: rcs-dev
   region: ap-northeast-2
 
 iam:
@@ -58,7 +58,7 @@ vpc:
       ap-northeast-2c: {id: subnet-06990378050340147}
 
 managedNodeGroups:
-  - name: harmony-ng-1
+  - name: harmony-ng-2
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/SecretsManagerReadWrite
@@ -75,8 +75,9 @@ managedNodeGroups:
     # volumeSize: 20
     privateNetworking: true
     subnets:
+      - subnet-a4cd14cc
+      - subnet-0a4bbb1e5e9a464c3
       - subnet-0faf6de5af8237787
-      - subnet-02ddfb782ce49fff7
 
   - name: rcs-ng-1
     iam:
